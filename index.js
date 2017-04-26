@@ -66,33 +66,18 @@ function gitHub(branch, request){
 
 
 
- function update(application){
+ function update(project){
+    if(project.locked) return false
 
 
-//       if(req_branch == application.branch && !application.locked){
-//          application.locked = true 
-//          console.log("Build Started     @ sh " + application.cwd + "deploy.sh")
+    project.locked = true 
+    console.log("Build Started     @ sh " + project.cwd + "deploy.sh")
 
-//          let ls = spawn('sh', ['deploy.sh'], { cwd : application.cwd});
+    let ls = spawn('sh', ['deploy.sh'], { cwd : project.cwd});
 
-//          ls.stdout.on('data', (data) => {
-//          //  console.log(`stdout: ${data}`);
-//          });
-
-//          ls.stderr.on('data', (data) => {
-//          //  console.log(`stderr: ${data}`);
-//          });
-
-//          ls.on('close', (code) => {
-//              console.log("Build Completed   @ sh " + application.cwd + "deploy.sh")
-//              application.locked = false
-//              slack_it("Build Completed", application.hook)
-//              res("Completed")
-//          }); 
-
-//       } else {
-//          console.log('Not Master')
-//          rej("Not Master")
-//       }
-//    })
-// }
+    ls.on('close', (code) => {
+        console.log("Build Completed   @ sh " + project.cwd + "deploy.sh")
+        project.locked = false
+        return true
+    });    
+}
