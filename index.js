@@ -22,14 +22,14 @@ config.deployments.forEach(project => project['locked'] = false)
 config.deployments.forEach(project => project['retry']  = false)
 
 
-app.get('/deploy/:route', (req, res) => {
+app.post('/deploy/:route', (req, res) => {
     let project = config.deployments.find(x => x.route == req.params.route)
 
     if (!project) { res.status(404); return res.send("404") } 
     res.send(project.name)
 
-    if (project.type == "github")     if ( !gitHub(project.branch, req) ) return
-    if (project.type == "bitbucket")  if ( !bitBucket(project.branch, req) ) return
+    if (project.type == "github")     if ( !gitHub(project.branch, req.body) ) return
+    if (project.type == "bitbucket")  if ( !bitBucket(project.branch, req.body) ) return console.log("Invalid Request")
     
 
     console.log("test")
@@ -46,12 +46,12 @@ app.listen(config.settings.port, function () {
 function bitBucket(branch, request){
     let req_branch
 
+    console.log(JSON.stringify(request, 2))
+
     try {
         req_branch = request.push.changes[0].new.name
     }
     catch (err) {
-        console.log('Invalid Request')
-        rej("Invalid Request")
         return false
     }
     
