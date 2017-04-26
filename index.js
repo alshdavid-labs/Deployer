@@ -32,10 +32,12 @@ app.post('/deploy/:route', (req, res) => {
     if (project.type == "bitbucket")  if ( !bitBucket(project.branch, req.body) ) return console.log("Invalid Request")
 
     console.log(project.branch)
-    //update(project)
+    update(project)
 
 
 })
+
+app.get('/', (req, res) => res.send("Hey!"))
 
 app.listen(config.settings.port, function () {
   console.log('Deployer listening on port ' + config.settings.port)
@@ -61,8 +63,11 @@ function gitHub(branch, request){
     return true
 }
 
-// function update(application){
-//    return new Promise ((res, rej)=>{
+
+
+
+ function update(application){
+
 
 //       if(req_branch == application.branch && !application.locked){
 //          application.locked = true 
