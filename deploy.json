@@ -1,0 +1,27 @@
+{
+    "credentials" : {
+        "username" : "digitalfoundry",
+        "password" : "lama lama red migo"
+    },
+    "settings" : {
+        "port" : "4001"
+    },
+    "deployments" : [
+        {
+            "name" : "Marshall App",
+            "cwd" : "/app/admin/",
+            "command" : "sudo sh ./deploy.sh",
+            "route" : "91154978-5fc1-48d1-9ab2-7ef36d6acd01-9105d194-cee1-48b4-ad4e-9fa4a970d406",
+            "branch" : "master",
+            "type" : "bitbucket"
+        },
+        {
+            "name" : "Marshall Server",
+            "cwd" : "/app/server",
+            "command" : "sudo sh ./deploy.sh",
+            "route" : "76844a82-fd05-4a48-8e8c-ce9bdec1f073-77b405b2-6ac2-4c66-ad67-ca7705f84095",
+            "branch" : "master",
+            "type" : "bitbucket"
+        }
+    ]
+}
