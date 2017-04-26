@@ -46,16 +46,16 @@ app.listen(config.settings.port, function () {
 function bitBucket(branch, request){
     let req_branch
 
-    console.log(JSON.stringify(request, 2))
-
     try {
         req_branch = request.push.changes[0].new.name
-    }
-    catch (err) {
+    } catch (err) { }
+
+    if (branch == req_branch) { 
+        return true
+    } else {
         return false
     }
-    
-    return true
+
 }
 
 function gitHub(branch, request){
