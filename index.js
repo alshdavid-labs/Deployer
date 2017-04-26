@@ -95,7 +95,7 @@ function slack_it(message, url){
     ls.on('close', (code) => {
         console.log("Build Completed   @ sh " + project.cwd + "deploy.sh")
         project.locked = false
-        slack_it("Build: " + project.name, project.slack)
+        slack_it("Build: " + project.slack.message, project.slack.url)
         return true
     });    
 }

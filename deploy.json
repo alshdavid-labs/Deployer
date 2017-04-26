@@ -12,7 +12,10 @@
             "cwd" : "/app/admin/",
             "command" : "sudo sh ./deploy.sh",
             "route" : "91154978-5fc1-48d1-9ab2-7ef36d6acd01-9105d194-cee1-48b4-ad4e-9fa4a970d406",
-            "slack" : "https://hooks.slack.com/services/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",
+            "slack" : {
+                "url" : "https://hooks.slack.com/services/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",
+                "message" : "Prod"
+            },
             "branch" : "master",
             "type" : "bitbucket"
         },
@@ -21,7 +24,10 @@
             "cwd" : "/app/server",
             "command" : "sudo sh ./deploy.sh",
             "route" : "76844a82-fd05-4a48-8e8c-ce9bdec1f073-77b405b2-6ac2-4c66-ad67-ca7705f84095",
-            "slack" : "https://hooks.slack.com/services/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",
+            "slack" : { 
+                "url" : "https://hooks.slack.com/services/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",
+                "message" : "Prod"
+            },
             "branch" : "master",
             "type" : "bitbucket"
         }
