@@ -64,6 +64,14 @@ function gitHub(branch, request){
 }
 
 
+function slack_it(message, url){
+    request({
+       url: url,
+       method : 'POST',
+       json : true,
+       body : { "text" : message }
+   })
+}
 
 
  function update(project){
@@ -87,6 +95,7 @@ function gitHub(branch, request){
     ls.on('close', (code) => {
         console.log("Build Completed   @ sh " + project.cwd + "deploy.sh")
         project.locked = false
+        slack_it("Build: " + project.name, project.slack)
         return true
     });    
 }
