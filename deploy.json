@@ -8,7 +8,7 @@
     },
     "deployments" : [
         {
-            "name" : "Marshall App",
+            "name" : "Marshall App Production",
             "cwd" : "/app/admin/",
             "command" : "sudo sh ./deploy.sh",
             "route" : "91154978-5fc1-48d1-9ab2-7ef36d6acd01-9105d194-cee1-48b4-ad4e-9fa4a970d406",

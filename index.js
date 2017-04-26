@@ -30,9 +30,8 @@ app.post('/deploy/:route', (req, res) => {
 
     if (project.type == "github")     if ( !gitHub(project.branch, req.body) ) return
     if (project.type == "bitbucket")  if ( !bitBucket(project.branch, req.body) ) return console.log("Invalid Request")
-    
 
-    console.log("test")
+    console.log(project.branch)
     //update(project)
 
 
