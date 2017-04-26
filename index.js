@@ -75,6 +75,15 @@ function gitHub(branch, request){
 
     let ls = spawn('sh', ['deploy.sh'], { cwd : project.cwd});
 
+         ls.stdout.on('data', (data) => {
+            console.log(`stdout: ${data}`);
+         });
+
+         ls.stderr.on('data', (data) => {
+             //console.log(`stderr: ${data}`);
+         });
+
+
     ls.on('close', (code) => {
         console.log("Build Completed   @ sh " + project.cwd + "deploy.sh")
         project.locked = false
